@@ -1,0 +1,33 @@
+/**
+ * Foundation for Sites by ZURB
+ * Version 7.0.0
+ * foundation.zurb.com
+ * Licensed under MIT Open Source
+ * Sass/CSS Architecture: SMARTY
+ * Scalable and Modular Architecture for Right Theming by Yetinauts
+ * (Inspired by SMACSS, ITCSS and OOCSS)
+ */
+
+/* Activate */
+@import 'activate/settings/settings'; // Settings
+@import 'activate/tools/tools'; // Tools
+ 
+/* Base */
+@import '../_vendor/normalize-scss/sass/normalize'; // Generic Reset
+@import 'global'; // Global 
+@import 'base/elements/elements'; // Elements
+
+/* Layout */
+@import 'layout/grid/grid'; // Grid Layout
+@import 'layout/semantic/semantic'; // Semantic Elements
+
+/* Module */
+@import 'module/components/components'; // Components
+@import 'module/objects/objects'; // Objects
+@import 'module/prototypes/prototypes'; // Prototypes
+
+/* State */
+@import 'state/state'; // State Rules 
+
+/* Theme */
+@import 'theme/yeti/yeti'; // Default Theme - Yeti
