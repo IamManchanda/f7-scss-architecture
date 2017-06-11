@@ -3,9 +3,16 @@
  * Version 7.0.0
  * foundation.zurb.com
  * Licensed under MIT Open Source
+ * 
  * Sass/CSS Architecture: SMARTY
  * Scalable and Modular Architecture for Right Theming by Yetinauts
  * (Inspired by SMACSS, ITCSS and OOCSS)
+ * 
+ * Sass/CSS Naming Convention: BEMIT
+ * BEM(1) + ITCSS(2) = BEMIT(3) 
+ * (1) https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
+ * (2) https://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/
+ * (3) https://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/
  */
 
 /* Activate */
@@ -13,21 +20,23 @@
 @import 'activate/tools/tools'; // Tools
  
 /* Base */
-@import '../_vendor/normalize-scss/sass/normalize'; // Generic Reset
-@import 'global'; // Global 
-@import 'base/elements/elements'; // Elements
+@import 'zf-global'; // Zf Global 
+@import 'base/reset/reset'; // Generic Reset
 
 /* Layout */
-@import 'layout/grid/grid'; // Grid Layout
+@import 'layout/hero/hero'; // Hero Section
+@import 'layout/navigation/navigation'; // Navigation
 @import 'layout/semantic/semantic'; // Semantic Elements
+@import 'layout/xy-grid/xy-grid'; // XY Grid Layout
 
 /* Module */
-@import 'module/components/components'; // Components
+@import 'module/components/components'; // Components - BEM
 @import 'module/objects/objects'; // Objects
 @import 'module/prototypes/prototypes'; // Prototypes
 
 /* State */
-@import 'state/state'; // State Rules 
+@import 'state/generic/generic'; // Generic State Rules  
+@import 'state/media-query/media-query'; // Media Query
 
 /* Theme */
 @import 'theme/yeti/yeti'; // Default Theme - Yeti
