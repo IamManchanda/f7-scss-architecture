@@ -1,0 +1,130 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+// sass-lint:disable force-attribute-nesting, force-pseudo-nesting, no-color-literals, no-qualifying-elements
+
+////
+/// @group zf-global
+////
+
+/// Global Namespacing for avoiding conflicts with other css classes,
+/// By default `zf-`, Change it to anything you would want like your brand name.
+/// @type String
+$zf-global-namespacing: 'zf-';
+
+/// Font size attribute applied to `<html>` and `<body>`. We use 100% by default so the value is inherited from the user's browser settings.
+/// @type Number
+$zf-global-font-size: 100% !default;
+
+/// Global width of your site. Used by the grid to determine row width.
+/// @type Number
+$zf-global-width: rem-calc(1200) !default;
+
+/// Default line height for all type. `$zf-global-lineheight` is 24px while `$zf-global-font-size` is 16px
+/// @type Number
+$zf-global-lineheight: 1.5 !default;
+
+/// Colors used for buttons, callouts, links, etc. There must always be a color called `primary`.
+/// @type Map
+$zf-foundation-palette: (
+  primary: #1779ba,
+  secondary: #767676,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #cc4b37,
+) !default;
+
+/// Color used for light gray UI items.
+/// @type Color
+$zf-light-gray: #e6e6e6 !default;
+
+/// Color used for medium gray UI items.
+/// @type Color
+$zf-medium-gray: #cacaca !default;
+
+/// Color used for dark gray UI items.
+/// @type Color
+$zf-dark-gray: #8a8a8a !default;
+
+/// Color used for black ui items.
+/// @type Color
+$zf-black: #0a0a0a !default;
+
+/// Color used for white ui items.
+/// @type Color
+$zf-white: #fefefe !default;
+
+/// Background color of the body.
+/// @type Color
+$zf-body-background: $zf-white !default;
+
+/// Text color of the body.
+/// @type Color
+$zf-body-font-color: $zf-black !default;
+
+/// Font stack of the body.
+/// @type List
+$zf-body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif !default;
+
+/// Set to `true` to enable antialiased type, using the `-webkit-font-smoothing` and `-moz-osx-font-smoothing` CSS properties.
+/// @type Boolean
+$zf-body-antialiased: true !default;
+
+/// Global value used for margin on components.
+/// @type Number
+$zf-global-margin: 1rem !default;
+
+/// Global value used for padding on components.
+/// @type Number
+$zf-global-padding: 1rem !default;
+
+/// Global value used for positioning on components.
+/// @type Number
+$zf-global-position: 1rem !default;
+
+/// Global font weight used for normal type.
+/// @type Keyword | Number
+$zf-global-weight-normal: normal !default;
+
+/// Global font weight used for bold type.
+/// @type Keyword | Number
+$zf-global-weight-bold: bold !default;
+
+/// Global value used for all elements that have a border radius.
+/// @type Number
+$zf-global-radius: 0 !default;
+
+/// Global value used for all menu styles. Can be overwritten at individual menu component level.
+/// @type Number
+$zf-global-menu-padding: 0.7rem 1rem !default;
+
+/// Global value used for all menu styles. Nested margin for submenu.
+$zf-global-menu-nested-margin: 1rem !default;
+
+/// Sets the text direction of the CSS. Can be either `ltr` or `rtl`.
+/// @type Keyword
+$zf-global-text-direction: ltr !default;
+
+/// Enabled responsive breakpoints for prototypes if applicable
+/// @type Boolean
+$zf-global-prototype-breakpoints: false !default;
+
+@if not map-has-key($zf-foundation-palette, primary) {
+  @error 'In $zf-foundation-palette, you must have a color named "primary".';
+}
+
+// Internal variables used for text direction
+$zf-global-left: if($zf-global-text-direction == rtl, right, left);
+$zf-global-right: if($zf-global-text-direction == rtl, left, right);
+
+/// Global tolerance for color pick contrast.
+/// @type Number
+$zf-global-color-pick-contrast-tolerance: 0 !default;
+
+// Internal variables used for colors
+$zf-primary-color: get-color(primary);
+$zf-secondary-color: get-color(secondary);
+$zf-success-color: get-color(success);
+$zf-warning-color: get-color(warning);
+$zf-alert-color: get-color(alert);
