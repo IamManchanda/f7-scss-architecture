@@ -9,7 +9,14 @@
  * (Inspired by SMACSS, ITCSS, OOCSS, and BEMIT)
  */
 
-/* Activate */
+// _Vendor (Sassy Lists)
+@import '_vendor/sassy-lists/stylesheets/helpers/true';
+@import '_vendor/sassy-lists/stylesheets/functions/purge';
+@import '_vendor/sassy-lists/stylesheets/functions/remove';
+@import '_vendor/sassy-lists/stylesheets/functions/replace';
+@import '_vendor/sassy-lists/stylesheets/functions/to-list';
+
+// Activate 
 @import 'activate/utilities/utilities'; // Utilities
  
 /* Base */
