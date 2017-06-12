@@ -6,13 +6,7 @@
  * 
  * Sass/CSS Architecture: SMARTY
  * Scalable and Modular Architecture for Right Theming by Yetinauts
- * (Inspired by SMACSS, ITCSS and OOCSS)
- * 
- * Sass/CSS Naming Convention: BEMIT
- * BEM(1) + ITCSS(2) = BEMIT(3) 
- * (1) https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
- * (2) https://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/
- * (3) https://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/
+ * (Inspired by SMACSS, ITCSS, OOCSS, and BEMIT)
  */
 
 /* Activate */
@@ -24,8 +18,6 @@
 @import 'base/reset/reset'; // Generic Reset
 
 /* Layout */
-@import 'layout/hero/hero'; // Hero Section
-@import 'layout/navigation/navigation'; // Navigation
 @import 'layout/semantic/semantic'; // Semantic Elements
 @import 'layout/xy-grid/xy-grid'; // XY Grid Layout
 
