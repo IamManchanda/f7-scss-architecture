@@ -128,3 +128,232 @@ $-zf-secondary-color: get-color(secondary);
 $-zf-success-color: get-color(success);
 $-zf-warning-color: get-color(warning);
 $-zf-alert-color: get-color(alert);
+
+/// Font family for header elements.
+/// @type String | List
+$-zf-header-font-family: $-zf-body-font-family !default;
+
+/// Font weight of headers.
+/// @type String
+$-zf-header-font-weight: $-zf-global-weight-normal !default;
+
+/// Font style (e.g. italicized) of headers.
+/// @type String
+$-zf-header-font-style: normal !default;
+
+/// Font stack used for elements that use monospaced type, such as code samples
+/// @type String | List
+$-zf-font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace !default;
+
+/// Color of headers.
+/// @type Color
+$-zf-header-color: inherit !default;
+
+/// Line height of headers.
+/// @type Number
+$-zf-header-lineheight: 1.4 !default;
+
+/// Bottom margin of headers.
+/// @type Number
+$-zf-header-margin-bottom: 0.5rem !default;
+
+/// Styles for headings at various screen sizes. Each key is a breakpoint, and each value is a map of heading styles.
+/// @type Map
+$-zf-header-styles: (
+  small: (
+    'h1': ('font-size': 24),
+    'h2': ('font-size': 20),
+    'h3': ('font-size': 19),
+    'h4': ('font-size': 18),
+    'h5': ('font-size': 17),
+    'h6': ('font-size': 16),
+  ),
+  medium: (
+    'h1': ('font-size': 48),
+    'h2': ('font-size': 40),
+    'h3': ('font-size': 31),
+    'h4': ('font-size': 25),
+    'h5': ('font-size': 20),
+    'h6': ('font-size': 16),
+  ),
+) !default;
+
+// $-zf-header-styles map is built from $-zf-header-sizes in order to ensure downward compatibility
+// when $-zf-header-sizes is depreciated, $-zf-header-styles needs to get !default values like settings.scss
+@function build_from_header-sizes($-zf-header-sizes) {
+  @warn 'Note, that $-zf-header-sizes has been replaced with $-zf-header-styles. $-zf-header-sizes still works, but it is going to be depreciated.';
+  $-zf-header-styles: ();
+  @each $size, $headers in $-zf-header-sizes {
+    $-zf-header-map: ();
+    @each $header, $font-size in $headers {
+      $-zf-header-map: map-merge($-zf-header-map, ($header: ('font-size': $font-size)));  
+    }
+    $-zf-header-styles: map-merge($-zf-header-styles, ($size: $-zf-header-map));
+  }
+  @return $-zf-header-styles;
+}
+
+// If it exists $-zf-headers-sizes is used to build $-zf-header-styles. See the documentation.
+@if variable-exists(-zf-header-sizes) {
+  $-zf-header-styles: build_from_header-sizes($-zf-header-sizes);
+}
+
+/// Text rendering method of headers.
+/// @type String
+$-zf-header-text-rendering: optimizeLegibility !default;
+
+/// Font size of `<small>` elements.
+/// @type Number
+$-zf-small-font-size: 80% !default;
+
+/// Color of `<small>` elements when placed inside headers.
+/// @type Color
+$-zf-header-small-font-color: $-zf-medium-gray !default;
+
+/// Line height of text inside `<p>` elements.
+/// @type Number
+$-zf-paragraph-lineheight: 1.6 !default;
+
+/// Bottom margin of paragraphs.
+/// @type Number
+$-zf-paragraph-margin-bottom: 1rem !default;
+
+/// Text rendering method for paragraph text.
+/// @type String
+$-zf-paragraph-text-rendering: optimizeLegibility !default;
+
+/// Text color of code samples.
+/// @type Color
+$-zf-code-color: $-zf-black !default;
+
+/// Font family of code samples.
+/// @type String | List
+$-zf-code-font-family: $-zf-font-family-monospace !default;
+
+/// Font weight of text in code samples.
+/// @type String
+$-zf-code-font-weight: $-zf-global-weight-normal !default;
+
+/// Background color of code samples.
+/// @type Color
+$-zf-code-background: $-zf-light-gray !default;
+
+/// Border around code samples.
+/// @type List
+$-zf-code-border: 1px solid $-zf-medium-gray !default;
+
+/// Padding around text of code samples.
+/// @type Number | List
+$-zf-code-padding: rem-calc(2 5 1) !default;
+
+/// Default color for links.
+/// @type Color
+$-zf-anchor-color: $-zf-primary-color !default;
+
+/// Default color for links on hover.
+/// @type Color
+$-zf-anchor-color-hover: scale-color($-zf-anchor-color, $lightness: -14%) !default;
+
+/// Default text deocration for links.
+/// @type String
+$-zf-anchor-text-decoration: none !default;
+
+/// Default text decoration for links on hover.
+/// @type String
+$-zf-anchor-text-decoration-hover: none !default;
+
+/// Maximum width of a divider.
+/// @type Number
+$-zf-hr-width: $-zf-global-width !default;
+
+/// Default border for a divider.
+/// @type List
+$-zf-hr-border: 1px solid $-zf-medium-gray !default;
+
+/// Default margin for a divider.
+/// @type Number | List
+$-zf-hr-margin: rem-calc(20) auto !default;
+
+/// Line height for items in a list.
+/// @type Number
+$-zf-list-lineheight: $-zf-paragraph-lineheight !default;
+
+/// Bottom margin for items in a list.
+/// @type Number
+$-zf-list-margin-bottom: $-zf-paragraph-margin-bottom !default;
+
+/// Bullet type to use for unordered lists (e.g., `square`, `circle`, `disc`).
+/// @type String
+$-zf-list-style-type: disc !default;
+
+/// Positioning for bullets on unordered list items.
+/// @type String
+$-zf-list-style-position: outside !default;
+
+/// Left (or right) margin for lists.
+/// @type Number
+$-zf-list-side-margin: 1.25rem !default;
+
+/// Left (or right) margin for a list inside a list.
+/// @type Number
+$-zf-list-nested-side-margin: 1.25rem !default;
+
+/// Bottom margin for `<dl>` elements.
+/// @type Number
+$-zf-defnlist-margin-bottom: 1rem !default;
+
+/// Font weight for `<dt>` elements.
+/// @type String
+$-zf-defnlist-term-weight: $-zf-global-weight-bold !default;
+
+/// Spacing between `<dt>` and `<dd>` elements.
+/// @type Number
+$-zf-defnlist-term-margin-bottom: 0.3rem !default;
+
+/// Text color of `<blockquote>` elements.
+/// @type Color
+$-zf-blockquote-color: $-zf-dark-gray !default;
+
+/// Padding inside a `<blockquote>` element.
+/// @type Number | List
+$-zf-blockquote-padding: rem-calc(9 20 0 19) !default;
+
+/// Side border for `<blockquote>` elements.
+/// @type List
+$-zf-blockquote-border: 1px solid $-zf-medium-gray !default;
+
+/// Font size for `<cite>` elements.
+/// @type Number
+$-zf-cite-font-size: rem-calc(13) !default;
+
+/// Text color for `<cite>` elements.
+/// @type Color
+$-zf-cite-color: $-zf-dark-gray !default;
+
+/// Pseudo content for `<cite>` elements.
+/// @type String
+$-zf-cite-pseudo-content: '\2014 \0020' !default;
+
+/// Font family for `<kbd>` elements.
+/// @type String | List
+$-zf-keystroke-font: $-zf-font-family-monospace !default;
+
+/// Text color for `<kbd>` elements.
+/// @type Color
+$-zf-keystroke-color: $-zf-black !default;
+
+/// Background color for `<kbd>` elements.
+/// @type Color
+$-zf-keystroke-background: $-zf-light-gray !default;
+
+/// Padding for `<kbd>` elements.
+/// @type Number | List
+$-zf-keystroke-padding: rem-calc(2 4 0) !default;
+
+/// Border radius for `<kbd>` elements.
+/// @type Number | List
+$-zf-keystroke-radius: $-zf-global-radius !default;
+
+/// Bottom border style for `<abbr>` elements.
+/// @type List
+$-zf-abbr-underline: 1px dotted $-zf-black !default;

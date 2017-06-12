@@ -5,3 +5,257 @@
 ////
 /// @group base-typography
 ////
+
+// Base Typography
+// - - - - - - - - - - - - - - -
+// These are styles applied to basic HTML tags, including:
+//   - Paragraphs <p>
+//   - Bold/italics <b> <strong> <i> <em>
+//   - Small text <small>
+//   - Headings <h1>-<h6>
+//   - Anchors <a>
+//   - Dividers <hr>
+//   - Lists <ul> <ol> <dl>
+//   - Blockquotes <blockquote>
+//   - Code blocks <code>
+//   - Abbreviations <abbr>
+//   - Citations <cite>
+//   - Keystrokes <kbd>
+
+// Typography resets not included in minireset library
+div,
+form {
+  margin: 0;
+  padding: 0;
+}
+
+// Paragraphs
+p {
+  margin-bottom: $-zf-paragraph-margin-bottom;
+
+  font-size: inherit;
+  line-height: $-zf-paragraph-lineheight;
+  text-rendering: $-zf-paragraph-text-rendering;
+}
+
+// Emphasized text
+em,
+i {
+  font-style: italic;
+  line-height: inherit;
+}
+
+// Strong text
+strong,
+b {
+  font-weight: $-zf-global-weight-bold;
+  line-height: inherit;
+}
+
+// Small text
+small {
+  font-size: $-zf-small-font-size;
+  line-height: inherit;
+}
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $-zf-header-font-family;
+  font-style: $-zf-header-font-style;
+  font-weight: $-zf-header-font-weight;
+  color: $-zf-header-color;
+  text-rendering: $-zf-header-text-rendering;
+
+  small {
+    line-height: 0;
+    color: $-zf-header-small-font-color;
+  }
+}
+
+// Heading styles
+@each $size, $headers in $-zf-header-styles {
+  @include breakpoint($size) {
+    @each $header, $header-defs in $headers {
+      $font-size-temp: 1rem;
+      #{$header} {
+
+        @if map-has-key($header-defs, font-size) {
+          $font-size-temp: rem-calc(map-get($header-defs, font-size));
+          font-size: $font-size-temp;
+        } @else if map-has-key($header-defs, fs) {
+          $font-size-temp: rem-calc(map-get($header-defs, fs));
+          font-size: $font-size-temp;
+        } @else if $size == $-zf-zero-breakpoint {
+          font-size: $font-size-temp;
+        }
+        @if map-has-key($header-defs, line-height) {
+          line-height: unitless-calc(map-get($header-defs, line-height), $font-size-temp);
+        } @else if map-has-key($header-defs, lh) {
+          line-height: unitless-calc(map-get($header-defs, lh), $font-size-temp);
+        } @else if $size == $-zf-zero-breakpoint {
+          line-height: unitless-calc($-zf-header-lineheight, $font-size-temp);
+        }
+
+        @if map-has-key($header-defs, margin-top) {
+          margin-top: rem-calc(map-get($header-defs, margin-top));
+        } @else if map-has-key($header-defs, mt) {
+          margin-top: rem-calc(map-get($header-defs, mt));
+        } @else if $size == $-zf-zero-breakpoint {
+          margin-top: 0;
+        }
+        @if map-has-key($header-defs, margin-bottom) {
+          margin-bottom: rem-calc(map-get($header-defs, margin-bottom));
+        } @else if map-has-key($header-defs, mb) {
+          margin-bottom: rem-calc(map-get($header-defs, mb));
+        } @else if $size == $-zf-zero-breakpoint {
+          margin-bottom: rem-calc($-zf-header-margin-bottom);
+        }
+      }
+    }
+  }
+}
+
+// Links
+a {
+  line-height: inherit;
+  color: $-zf-anchor-color;
+  text-decoration: $-zf-anchor-text-decoration;
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: $-zf-anchor-color-hover;
+    @if $-zf-anchor-text-decoration-hover != $-zf-anchor-text-decoration {
+      text-decoration: $-zf-anchor-text-decoration-hover;
+    }
+  }
+
+  img {
+    border: 0;
+  }
+}
+
+// Horizontal rule
+hr {
+  clear: both;
+
+  max-width: $-zf-hr-width;
+  height: 0;
+  margin: $-zf-hr-margin;
+
+  border-top: 0;
+  border-right: 0;
+  border-bottom: $-zf-hr-border;
+  border-left: 0;
+}
+
+// Lists
+ul,
+ol,
+dl {
+  margin-bottom: $-zf-list-margin-bottom;
+  list-style-position: $-zf-list-style-position;
+  line-height: $-zf-list-lineheight;
+}
+
+// List items
+li {
+  font-size: inherit;
+}
+
+// Unordered lists
+ul {
+  margin-#{$-zf-global-left}: $-zf-list-side-margin;
+  list-style-type: $-zf-list-style-type;
+}
+
+// Ordered lists
+ol {
+  margin-#{$-zf-global-left}: $-zf-list-side-margin;
+}
+
+// Nested unordered/ordered lists
+ul, ol {
+  & & {
+    margin-#{$-zf-global-left}: $-zf-list-nested-side-margin;
+    margin-bottom: 0;
+  }
+}
+
+// Definition lists
+dl {
+  margin-bottom: $-zf-defnlist-margin-bottom;
+
+  dt {
+    margin-bottom: $-zf-defnlist-term-margin-bottom;
+    font-weight: $-zf-defnlist-term-weight;
+  }
+}
+
+// Blockquotes
+blockquote {
+  margin: 0 0 $-zf-paragraph-margin-bottom;
+  padding: $-zf-blockquote-padding;
+  border-#{$-zf-global-left}: $-zf-blockquote-border;
+
+  &, p {
+    line-height: $-zf-paragraph-lineheight;
+    color: $-zf-blockquote-color;
+  }
+}
+
+// Citations
+cite {
+  display: block;
+  font-size: $-zf-cite-font-size;
+  color: $-zf-cite-color;
+
+  &:before {
+    content: $-zf-cite-pseudo-content;
+  }
+}
+
+// Abbreviations
+abbr, abbr[title] {
+  border-bottom: $-zf-abbr-underline;
+  cursor: help;
+  text-decoration: none;
+}
+
+// Figures
+figure {
+  margin: 0;
+}
+
+// Code
+code {
+  padding: $-zf-code-padding;
+
+  border: $-zf-code-border;
+  background-color: $-zf-code-background;
+
+  font-family: $-zf-code-font-family;
+  font-weight: $-zf-code-font-weight;
+  color: $-zf-code-color;
+}
+
+// Keystrokes
+kbd {
+  margin: 0;
+  padding: $-zf-keystroke-padding;
+
+  background-color: $-zf-keystroke-background;
+
+  font-family: $-zf-keystroke-font;
+  color: $-zf-keystroke-color;
+
+  @if has-value($-zf-keystroke-radius) {
+    border-radius: $-zf-keystroke-radius;
+  }
+}
