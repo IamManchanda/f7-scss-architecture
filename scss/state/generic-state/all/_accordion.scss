@@ -6,7 +6,8 @@
 /// @group generic-state-accordion
 ////
 
-@mixin zf-generic-state-accordion-container {
+@mixin zf-generic-state-accordion-disabled {
+  &.is-disabled,
   &[disabled] {
     .c-accordion__title {
       cursor: not-allowed;
@@ -77,7 +78,7 @@
 
 @mixin zf-generic-state-accordion {
   .c-accordion {
-    @include zf-generic-state-accordion-container;
+    @include zf-generic-state-accordion-disabled;
 
     .c-accordion__item {
       @include zf-generic-state-accordion-item;
