@@ -3,45 +3,67 @@
 // Licensed under MIT Open Source
 
 ////
-/// @group accordion
+/// @group components-accordion
 ////
 
-/// Default background color of an accordion group.
-/// @type Color
-$-zf-accordion-background: $-zf-white !default;
+/// Adds styles for an accordion container. Apply this to the same element that gets `data-accordion`.
+@mixin zf-components-accordion-container (
+  $-zf-background: $-zf-accordion-background
+) {
+  margin-#{$-zf-global-left}: 0;
+  background: $-zf-background;
+  list-style-type: none;
+}
 
-/// If `true`, adds plus and minus icons to the side of each accordion title.
-/// @type Boolean
-$-zf-accordion-plusminus: true !default;
+/// Adds styles for the title of an accordion item. Apply this to the link within an accordion item.
+@mixin zf-components-accordion-title (
+  $-zf-padding: $-zf-accordion-item-padding,
+  $-zf-font-size: $-zf-accordion-title-font-size,
+  $-zf-color: $-zf-accordion-item-color,
+  $-zf-border: $-zf-accordion-content-border
+) {
+  position: relative;
+  display: block;
+  padding: $-zf-padding;
 
-/// Font size of accordion titles.
-/// @type Number
-$-zf-accordion-title-font-size: rem-calc(12) !default;
+  border: $-zf-border;
+  border-bottom: 0;
 
-/// Default text color for items in a Menu.
-/// @type Color
-$-zf-accordion-item-color: $-zf-primary-color !default;
+  font-size: $-zf-font-size;
+  line-height: 1;
+  color: $-zf-color;
+}
 
-/// Default background color on hover for items in a Menu.
-/// @type Color
-$-zf-accordion-item-background-hover: $-zf-light-gray !default;
+/// Adds styles for accordion content. Apply this to the content pane below an accordion item's title.
+@mixin zf-components-accordion-content (
+  $-zf-padding: $-zf-accordion-content-padding,
+  $-zf-border: $-zf-accordion-content-border,
+  $-zf-background: $-zf-accordion-content-background,
+  $-zf-color: $-zf-accordion-content-color
+) {
+  display: none;
+  padding: $-zf-padding;
 
-/// Default padding of an accordion item.
-/// @type Number | List
-$-zf-accordion-item-padding: 1.25rem 1rem !default;
+  border: $-zf-border;
+  border-bottom: 0;
+  background-color: $-zf-background;
 
-/// Default background color of tab content.
-/// @type Color
-$-zf-accordion-content-background: $-zf-white !default;
+  color: $-zf-color;
+}
 
-/// Default border color of tab content.
-/// @type Color
-$-zf-accordion-content-border: 1px solid $-zf-light-gray !default;
+@mixin zf-components-accordion {
+  .c-accordion {
+    &#{&} { 
+      @include zf-components-accordion-container;
+    }
+    .c-accordion__item {
+      .c-accordion__title {
+        @include zf-components-accordion-title;
+      }
 
-/// Default text color of tab content.
-/// @type Color
-$-zf-accordion-content-color: $-zf-body-font-color !default;
-
-/// Default padding for tab content.
-/// @type Number | List
-$-zf-accordion-content-padding: 1rem !default;
+      .c-accordion__content {
+        @include zf-components-accordion-content;
+      }
+    }
+  }
+}

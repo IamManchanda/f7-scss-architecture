@@ -4,6 +4,6 @@
 
 @import 'all/accordion';
 
-@mixin zf-components {
-  @include zf-components-accordion;
+@mixin zf-generic-state {
+  @include zf-generic-state-accordion;
 }

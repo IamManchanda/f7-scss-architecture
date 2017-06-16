@@ -1,0 +1,86 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group generic-state-accordion
+////
+
+@mixin zf-generic-state-accordion-container {
+  &[disabled] {
+    .c-accordion__title {
+      cursor: not-allowed;
+    }
+  }
+}
+
+/// Adds styles for the accordion item. Apply this to the list item within an accordion ul.
+@mixin zf-generic-state-accordion-item (
+  $-zf-border: $-zf-accordion-content-border,
+  $-zf-background-hover: $-zf-accordion-item-background-hover
+) {
+  .c-accordion__title {
+    @if $-zf-accordion-plusminus {
+      &::before {
+        position: absolute;
+        top: 50%;
+        #{$-zf-global-right}: 1rem;
+        margin-top: -0.5rem;
+        content: '+';
+      }
+    }
+  }
+
+  .is-active {
+    .c-accordion__title {
+      &::before {
+        content: '\2013';
+      }
+    }
+  }
+
+
+  &:first-child > :first-child {
+    border-radius: $-zf-global-radius $-zf-global-radius 0 0;
+  }
+
+  &:last-child > :last-child {
+    border-radius: 0 0 $-zf-global-radius $-zf-global-radius;
+  }
+
+  :last-child {
+    .c-accordion__content {
+      &:last-child {
+        border-bottom: $-zf-border;
+      }
+    }
+  }
+
+  .is-active {
+    .c-accordion__title {
+      &:hover,
+      &:focus {
+        background-color: $-zf-background-hover;
+      }
+    }
+  }
+  
+  &:last-child:not(.is-active) {
+    .c-accordion__title {
+      & {
+        border-bottom: $-zf-border;
+        border-radius: 0 0 $-zf-global-radius $-zf-global-radius;
+      }
+    }
+  } 
+}
+
+@mixin zf-generic-state-accordion {
+  .c-accordion {
+    @include zf-generic-state-accordion-container;
+
+    .c-accordion__item {
+      @include zf-generic-state-accordion-item;
+    }
+  }
+}
