@@ -29,13 +29,22 @@
         content: '+';
       }
     }
+
+    &:hover,
+    &:focus {
+      background-color: $-zf-background-hover;
+    }
   }
 
-  .is-active {
+  &.is-active {
     .c-accordion__title {
       &::before {
         content: '\2013';
       }
+    }
+
+    .c-accordion__content {
+      display: block;
     }
   }
 
@@ -56,15 +65,6 @@
     }
   }
 
-  .is-active {
-    .c-accordion__title {
-      &:hover,
-      &:focus {
-        background-color: $-zf-background-hover;
-      }
-    }
-  }
-  
   &:last-child:not(.is-active) {
     .c-accordion__title {
       & {
