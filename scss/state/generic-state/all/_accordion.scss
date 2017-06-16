@@ -17,7 +17,7 @@
 
 /// Adds styles for the accordion item. Apply this to the list item within an accordion ul.
 @mixin zf-generic-state-accordion-item (
-  $-zf-border: $-zf-accordion-content-border,
+  $-zf-border: $-zf-global-border,
   $-zf-background-hover: $-zf-accordion-item-background-hover
 ) {
   .c-accordion__title {
@@ -59,7 +59,7 @@
   }
 
   :last-child {
-    .c-accordion__content {
+    .c-accordion__content.o-bordered {
       &:last-child {
         border-bottom: $-zf-border;
       }
@@ -67,7 +67,7 @@
   }
 
   &:last-child:not(.is-active) {
-    .c-accordion__title {
+    .c-accordion__title.o-bordered {
       & {
         border-bottom: $-zf-border;
         border-radius: 0 0 $-zf-global-radius $-zf-global-radius;

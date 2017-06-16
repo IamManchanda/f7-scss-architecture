@@ -20,13 +20,11 @@
   $-zf-padding: $-zf-accordion-item-padding,
   $-zf-font-size: $-zf-accordion-title-font-size,
   $-zf-color: $-zf-accordion-item-color,
-  $-zf-border: $-zf-accordion-content-border
+  $-zf-border: $-zf-global-border
 ) {
   position: relative;
   display: block;
   padding: $-zf-padding;
-
-  border: $-zf-border;
   border-bottom: 0;
 
   font-size: $-zf-font-size;
@@ -37,14 +35,12 @@
 /// Adds styles for accordion content. Apply this to the content pane below an accordion item's title.
 @mixin zf-components-accordion-content (
   $-zf-padding: $-zf-accordion-content-padding,
-  $-zf-border: $-zf-accordion-content-border,
+  $-zf-border: $-zf-global-border,
   $-zf-background: $-zf-accordion-content-background,
   $-zf-color: $-zf-accordion-content-color
 ) {
   display: none;
   padding: $-zf-padding;
-
-  border: $-zf-border;
   border-bottom: 0;
   background-color: $-zf-background;
 

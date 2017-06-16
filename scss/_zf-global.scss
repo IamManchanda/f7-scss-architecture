@@ -95,6 +95,10 @@ $-zf-global-weight-bold: bold !default;
 /// @type Number
 $-zf-global-radius: 0 !default;
 
+/// Global value used for all components that have a border.
+/// @type Number
+$-zf-global-border: 1px solid $-zf-light-gray !default;
+
 /// Global value used for all menu styles. Can be overwritten at individual menu component level.
 /// @type Number
 $-zf-global-menu-padding: 0.7rem 1rem !default;
