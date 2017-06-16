@@ -1,0 +1,71 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group components-accordion
+////
+
+/// Adds styles for an accordion container. Apply this to the same element that gets `data-accordion`.
+@mixin zf-components-accordion-container (
+  $-zf-background: $-zf-accordion-background
+) {
+  margin-#{$-zf-global-left}: 0;
+  background: $-zf-background;
+  list-style-type: none;
+}
+
+/// Adds styles for the title of an accordion item. Apply this to the link within an accordion item.
+@mixin zf-components-accordion-title (
+  $-zf-padding: $-zf-accordion-item-padding,
+  $-zf-font-size: $-zf-accordion-title-font-size,
+  $-zf-color: $-zf-accordion-item-color,
+  $-zf-border: $-zf-accordion-content-border
+) {
+  position: relative;
+  display: block;
+  padding: $-zf-padding;
+
+  border: $-zf-border;
+  border-bottom: 0;
+
+  font-size: $-zf-font-size;
+  line-height: 1;
+  color: $-zf-color;
+}
+
+/// Adds styles for accordion content. Apply this to the content pane below an accordion item's title.
+@mixin zf-components-accordion-content (
+  $-zf-padding: $-zf-accordion-content-padding,
+  $-zf-border: $-zf-accordion-content-border,
+  $-zf-background: $-zf-accordion-content-background,
+  $-zf-color: $-zf-accordion-content-color
+) {
+  display: none;
+  padding: $-zf-padding;
+
+  border: $-zf-border;
+  border-bottom: 0;
+  background-color: $-zf-background;
+
+  color: $-zf-color;
+}
+
+@mixin zf-components-accordion {
+  .c-accordion {
+    &#{&} { 
+      @include zf-components-accordion-container;
+    }
+
+    .c-accordion__item {
+    
+      .c-accordion__title {
+        @include zf-components-accordion-title;
+      }
+
+      .c-accordion__content {
+        @include zf-components-accordion-content;
+      }
+    }
+  }
+}
