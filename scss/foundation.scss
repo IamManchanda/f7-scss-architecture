@@ -46,6 +46,7 @@
 @mixin zf-everything($prototype: false) {
   /* Modules */
   @include zf-components;
+  @include zf-objects;
 
   /* State */
   @include zf-generic-state;

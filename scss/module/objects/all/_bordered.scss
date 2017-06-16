@@ -1,0 +1,15 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group objects-border
+////
+
+@mixin zf-objects-bordered (
+  $-zf-border: $-zf-global-border
+) {
+  .o-bordered {
+    border: $-zf-border;
+  }
+}
