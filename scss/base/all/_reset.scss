@@ -1,0 +1,169 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group base-reset
+////
+
+@mixin zf-base-reset {
+  html,
+  body,
+  div,
+  form,
+  p,
+  ol,
+  ul,
+  li,
+  dl,
+  dt,
+  dd,
+  blockquote,
+  figure,
+  fieldset,
+  legend,
+  textarea,
+  pre,
+  iframe,
+  hr,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    padding: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 100%;
+    font-weight: normal;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    margin: 0;
+  }
+
+  html {
+    box-sizing: border-box;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  img,
+  embed,
+  iframe,
+  object,
+  audio,
+  video {
+    height: auto;
+    max-width: 100%;
+  }
+
+  iframe {
+    border: 0;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  td,
+  th {
+    padding: 0;
+    text-align: left;
+  }
+
+  html {
+    font-size: $-zf-global-font-size;
+  }
+
+  // Default body styles
+  body {
+    margin: 0;
+    padding: 0;
+    background: $-zf-body-background;
+    font-family: $-zf-body-font-family;
+    font-weight: $-zf-global-weight-normal;
+    line-height: $-zf-global-lineheight;
+    color: $-zf-body-font-color;
+
+    @if ($-zf-body-antialiased) {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+
+  img {
+    // Get rid of gap under images by making them display: inline-block; by default
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  // Make sure textarea takes on height automatically
+  textarea {
+    height: auto;
+    min-height: 50px;
+    border-radius: $-zf-global-radius;
+  }
+
+  // Make select elements are 100% width by default
+  select {
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: $-zf-global-radius;
+  }
+
+  // Styles Google Maps and MapQuest embeds properly
+  // sass-lint:disable-line no-ids
+  .map_canvas,
+  .mqa-display {
+    img,
+    embed,
+    object {
+      max-width: none !important;
+    }
+  }
+
+  // Reset <button> styles created by most browsers
+  button {
+    @include disable-mouse-outline;
+
+    padding: 0;
+    appearance: none;
+    border: 0;
+    border-radius: $-zf-global-radius;
+    background: transparent;
+    line-height: 1;
+  }
+
+  // Prevent text overflow on pre
+  pre {
+    overflow: auto;
+  }
+
+  // Make reset inherit font-family instead of settings sans-serif
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit;
+  }
+}
