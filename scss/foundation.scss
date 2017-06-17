@@ -22,8 +22,7 @@
 @import 'activate/variables/variables'; // Variables
  
 // Base
-@import 'base/reset/reset'; // Generic Reset
-@import 'base/typography/typography'; // Base Typography
+@import 'base/base'; // Base 
 
 // Layout
 @import 'layout/forms/forms'; // Forms
@@ -44,11 +43,14 @@
 @import 'theme/yeti/yeti'; // Default Theme - Yeti
 
 @mixin zf-everything($prototype: false) {
-  /* Modules */
+  /* Base - Reset and Typography */
+  @include zf-base;
+
+  /* Modules - Components, Objects and Prototypes */
   @include zf-components;
   @include zf-objects;
 
-  /* State */
+  /* State - Generic and Media Query */
   @include zf-generic-state;
 }
 
