@@ -79,9 +79,9 @@
 @mixin zf-generic-state-accordion {
   .c-accordion {
     @include zf-generic-state-accordion-disabled;
+  }
 
-    .c-accordion__item {
-      @include zf-generic-state-accordion-item;
-    }
+  .c-accordion__item {
+    @include zf-generic-state-accordion-item;
   }
 }
