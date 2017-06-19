@@ -49,19 +49,14 @@
 
 @mixin zf-components-accordion {
   .c-accordion {
-    &#{&} { 
-      @include zf-components-accordion-container;
-    }
+    @include zf-components-accordion-container;
+  }
 
-    .c-accordion__item {
-    
-      .c-accordion__title {
-        @include zf-components-accordion-title;
-      }
+  .c-accordion__title {
+    @include zf-components-accordion-title;
+  }
 
-      .c-accordion__content {
-        @include zf-components-accordion-content;
-      }
-    }
+  .c-accordion__content {
+    @include zf-components-accordion-content;
   }
 }
