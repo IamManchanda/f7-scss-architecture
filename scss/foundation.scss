@@ -24,15 +24,12 @@
 // Base
 @import 'base/base'; // Base 
 
-// Layout
-@import 'layout/forms/forms'; // Forms
-@import 'layout/navigation/navigation'; // Navigation
-@import 'layout/semantic/semantic'; // Semantic Elements
-@import 'layout/xy-grid/xy-grid'; // XY Grid Layout
+// Initiate
+@import 'initiate/objects/objects'; // Objects
+@import 'initiate/xy-grid/xy-grid'; // XY Grid
 
 // Module
 @import 'module/components/components'; // Components
-@import 'module/objects/objects'; // Objects
 @import 'module/prototypes/prototypes'; // Prototypes
 
 // State
@@ -45,10 +42,12 @@
 @mixin zf-everything($prototype: false) {
   /* Base - Reset and Typography */
   @include zf-base;
-
-  /* Modules - Components, Objects and Prototypes */
-  @include zf-components;
+  
+  /* Initiate - Object and XY Grid */
   @include zf-objects;
+
+  /* Modules - Components and Prototypes */
+  @include zf-components;
 
   /* State - Generic and Media Query */
   @include zf-generic-state;
