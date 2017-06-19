@@ -24,13 +24,13 @@
 // Base
 @import 'base/base'; // Base 
 
-// Initiate
-@import 'initiate/objects/objects'; // Objects
-@import 'initiate/xy-grid/xy-grid'; // XY Grid
+// Objects
+@import '/objects/objects'; // Objects
 
 // Module
 @import 'module/components/components'; // Components
 @import 'module/prototypes/prototypes'; // Prototypes
+@import 'module/xy-grid/xy-grid'; // XY Grid
 
 // State
 @import 'state/generic-state/generic-state'; // Generic State Rules  
